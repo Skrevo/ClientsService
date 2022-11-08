@@ -34,4 +34,15 @@ public class Client {
     @OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
     private Set<Phone> phones;
 
+    @Override
+    public String toString() {
+        return "Client{" +
+                "id=" + id +
+                ", surname='" + surname + '\'' +
+                ", name='" + name + '\'' +
+                ", patronymic='" + patronymic + '\'' +
+                ", gender=" + gender +
+                ", email='" + email + '\'' +
+                '}';
+    }
 }
