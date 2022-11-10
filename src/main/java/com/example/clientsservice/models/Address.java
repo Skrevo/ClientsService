@@ -28,5 +28,8 @@ public class Address {
     @Column(nullable = false)
     private String house;
     private String apartment;
+    @OneToOne(mappedBy = "address", fetch = FetchType.LAZY)
+    @JoinColumn(foreignKey = @ForeignKey(name = "FK_address_clients"))
+    private Client client;
 
 }

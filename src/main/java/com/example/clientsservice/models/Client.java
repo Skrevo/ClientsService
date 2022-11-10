@@ -33,6 +33,9 @@ public class Client {
     private Gender gender;
     @Column(length = 50, nullable = false, unique = true)
     private String email;
+    @OneToOne(fetch = FetchType.LAZY)
+    private Address address;
+
     @OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
     private Set<Phone> phones;
     @ManyToMany(fetch = FetchType.LAZY)
