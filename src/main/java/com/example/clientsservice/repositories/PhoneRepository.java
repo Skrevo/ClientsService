@@ -1,4 +1,8 @@
 package com.example.clientsservice.repositories;
 
-public interface PhoneRepository {
+import com.example.clientsservice.models.Client;
+import com.example.clientsservice.models.Phone;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface PhoneRepository extends JpaRepository<Phone, Integer> {
 }

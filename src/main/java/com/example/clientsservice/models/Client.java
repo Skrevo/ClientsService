@@ -35,7 +35,6 @@ public class Client {
     private String email;
     @OneToOne(fetch = FetchType.LAZY)
     private Address address;
-
     @OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
     private Set<Phone> phones;
     @ManyToMany(fetch = FetchType.LAZY)
