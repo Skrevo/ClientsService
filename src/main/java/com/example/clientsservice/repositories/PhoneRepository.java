@@ -1,6 +1,5 @@
 package com.example.clientsservice.repositories;
 
-import com.example.clientsservice.models.Client;
 import com.example.clientsservice.models.Phone;
 import org.springframework.data.jpa.repository.JpaRepository;
 
