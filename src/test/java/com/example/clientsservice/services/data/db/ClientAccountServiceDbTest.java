@@ -32,8 +32,8 @@ public class ClientAccountServiceDbTest {
             null,null,new HashSet<>());
     static Client c2 = new Client(0, "b", "b", "b", FEMALE,"b@test.com",
             null,null,new HashSet<>());
-    static Account account1 = new Account(1L,100,new HashSet<>());
-    static Account account2 = new Account(2L,200,new HashSet<>());
+    static Account account1 = new Account(0L,100,new HashSet<>());
+    static Account account2 = new Account(0L,200,new HashSet<>());
 
     @Test
     @Order(1)
@@ -50,7 +50,8 @@ public class ClientAccountServiceDbTest {
     @Order(2)
     @Transactional
     public void findByClientId() {
-        Client actual = clientsService.findById(c1.getId());
+        Client actual = clientsService.save(c1);
+        c1.setId(actual.getId());
         System.out.println(actual);
         System.out.println(actual.getAccounts());
     }
