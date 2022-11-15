@@ -6,6 +6,8 @@ import com.example.clientsservice.services.data.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class AccountServiceDb implements AccountService {
 
@@ -20,5 +22,10 @@ public class AccountServiceDb implements AccountService {
     @Override
     public Account findById(Long id) {
         return accountRepository.findById(id).get();
+    }
+
+    @Override
+    public List<Account> saveAll(List<Account> accounts) {
+        return accountRepository.saveAll(accounts);
     }
 }

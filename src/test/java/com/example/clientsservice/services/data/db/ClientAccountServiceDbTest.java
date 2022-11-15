@@ -13,6 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.transaction.Transactional;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -28,18 +29,21 @@ public class ClientAccountServiceDbTest {
     private AccountService accountService;
 
     static Client c1 = new Client(0, "a", "a", "a", FEMALE,"a@test.com",
-            null,null,null);
-    static Account account1 = new Account(1L,100,null);
-    static Account account2 = new Account(2L,200,null);
-    Set<Account> a = Set.of(account1,account2);
+            null,null,new HashSet<>());
+    static Client c2 = new Client(0, "b", "b", "b", FEMALE,"b@test.com",
+            null,null,new HashSet<>());
+    static Account account1 = new Account(1L,100,new HashSet<>());
+    static Account account2 = new Account(2L,200,new HashSet<>());
 
     @Test
     @Order(1)
     void save() {
-        account1 = accountService.save(account1);
-        account2 = accountService.save(account2);
-        c1.setAccounts(a);
-        c1 = clientsService.save(c1);
+        List<Client> clientList = clientsService.saveAll(List.of(c1,c2));
+        List<Account> accountList = accountService.saveAll(List.of(account1,account2));
+        clientList.forEach(client -> client.getAccounts().addAll(accountList));
+
+        clientsService.saveAll(clientList);
+        accountService.saveAll(accountList);
     }
 
     @Test
