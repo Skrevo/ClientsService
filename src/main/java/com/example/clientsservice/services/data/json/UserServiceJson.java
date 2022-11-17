@@ -4,8 +4,6 @@ import com.example.clientsservice.models.User;
 import com.example.clientsservice.services.data.UserService;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
 import org.springframework.stereotype.Service;
 
 import java.io.FileReader;
