@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Clients</title>
+</head>
+<body>
+<div id="clientsTable">
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Surname</th>
+            <th>Name</th>
+            <th>Patronymic</th>
+            <th>Gender</th>
+            <th>Email</th>
+        </tr>
+        {{#clients}}
+            <tr>
+                <td>{{id}}</td>
+                <td>{{surname}}</td>
+                <td>{{name}}</td>
+                <td>{{patronymic}}</td>
+                <td>{{gender}}</td>
+                <td>{{email}}</td>
+            </tr>
+        {{/clients}}
+    </table>
+</div>
+</body>
+</html>
