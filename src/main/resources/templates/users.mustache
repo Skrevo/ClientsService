@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+</head>
+<body>
+<div id="addUsers">
+    <form action="userAddForm" method="post">
+        <input type="text" name="username" placeholder="Username">
+        <input type="text" name="password" placeholder="Password">
+        <select name="role" id="role">
+            <option value="USER">USER</option>
+            <option value="ADMIN">ADMIN</option>
+        </select>
+        <select name="status" id="status">
+            <option value="CREATED">CREATED</option>
+            <option value="ACTIVE">ACTIVE</option>
+            <option value="BLOCKED">BLOCKED</option>
+        </select>
+        <input type="submit" value="SAVE" id="submitButton">
+    </form>
+</div>
+<div id="usersTable">
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Role</th>
+            <th>Status</th>
+        </tr>
+        {{#users}}
+            <tr>
+                <td>{{id}}</td>
+                <td>{{username}}</td>
+                <td>{{password}}</td>
+                <td>{{role}}</td>
+                <td>{{status}}</td>
+            </tr>
+        {{/users}}
+    </table>
+</div>
+</body>
+</html>
