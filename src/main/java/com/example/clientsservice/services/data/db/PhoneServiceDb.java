@@ -6,6 +6,8 @@ import com.example.clientsservice.services.data.PhoneService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PhoneServiceDb implements PhoneService {
     @Autowired
@@ -14,5 +16,10 @@ public class PhoneServiceDb implements PhoneService {
     @Override
     public Phone save(Phone phone) {
         return phoneRepository.save(phone);
+    }
+
+    @Override
+    public List<Phone> saveAll(List<Phone> phones) {
+        return phoneRepository.saveAll(phones);
     }
 }
