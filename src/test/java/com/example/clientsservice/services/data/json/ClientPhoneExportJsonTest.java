@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
@@ -20,6 +21,9 @@ import static com.example.clientsservice.models.Client.Gender.MALE;
 @TestClassOrder(ClassOrderer.OrderAnnotation.class)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ClientPhoneExportJsonTest {
+
+    @Autowired
+    private PhoneService phoneService;
 
     @Qualifier("clientServiceJson")
     @Autowired
@@ -34,10 +38,26 @@ public class ClientPhoneExportJsonTest {
             null, null,null);
 
     @Test
+    @Order(2)
     void export() {
 
+        c1.setPhones(Collections.singleton(phone1));
+        c2.setPhones(Collections.singleton(phone2));
         List<Client> clientList = clientsService.saveAll(List.of(c1,c2));
 
         clientsService.saveAll(clientList);
+    }
+
+    @Test
+    @Order(1)
+    void save(){
+
+        c1 = clientsService.save(c1);
+        c2 = clientsService.save(c2);
+        phone1.setClient(c1);
+        phone2.setClient(c2);
+        phone1 = phoneService.save(phone1);
+        phone2 = phoneService.save(phone2);
+
     }
 }

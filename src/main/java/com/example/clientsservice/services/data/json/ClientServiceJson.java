@@ -1,11 +1,16 @@
 package com.example.clientsservice.services.data.json;
 
 import com.example.clientsservice.models.Client;
+import com.example.clientsservice.models.User;
+import com.example.clientsservice.repositories.ClientRepository;
 import com.example.clientsservice.services.data.ClientsService;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import org.springframework.stereotype.Service;
 
+import java.io.FileReader;
 import java.io.FileWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -14,12 +19,22 @@ public class ClientServiceJson implements ClientsService {
     private final String clientsFile = "clients.json";
     @Override
     public Client save(Client client) {
-        return null;
+        List<Client> list = findAll();
+        list.add(client);
+        saveAll(list);
+        return client;
     }
 
     @Override
     public List<Client> findAll() {
-        return null;
+        try {
+            List<Client> list = new Gson().fromJson(new FileReader(clientsFile), new TypeToken<>(){});
+            if (list != null)
+                return list;
+        } catch (Exception ignored) {
+
+        }
+        return new ArrayList<>();
     }
 
     @Override
