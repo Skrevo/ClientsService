@@ -15,12 +15,12 @@ import java.util.List;
 public class UsersController {
     @Autowired
     private UserService userService;
-
+/*
     @GetMapping("/")
     public String load() {
         return "redirect:users";
     }
-
+*/
     @GetMapping("/users")
     public String loadUsers(Model model) {
         List<User> list = userService.findAll();
