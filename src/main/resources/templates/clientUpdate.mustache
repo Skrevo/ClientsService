@@ -13,14 +13,12 @@
         <input type="text" name="name" placeholder="Name" value="{{name}}">
         <input type="text" name="patronymic" placeholder="Patronymic" value="{{patronymic}}">
         <input type="email" name="email" placeholder="Email" value="{{email}}">
-    {{/client}}
-    {{#gender}}
         <select name="gender" id="gender">
-            <option value="NONE" {{NONE}}>NONE</option>
-            <option value="MALE" {{MALE}}>MALE</option>
-            <option value="FEMALE" {{FEMALE}}>FEMALE</option>
+        {{#genders}}
+            <option value="{{key}}" {{value}}>{{key}}</option>
+        {{/genders}}
         </select>
-        {{/gender}}
+    {{/client}}
         <input type="submit" value="SAVE" id="submitButton">
     </form>
 </div>
