@@ -45,7 +45,7 @@ public class ClientsController {
     }
 
     @PostMapping("thisClientForm")
-    public ModelAndView thisClientForm(Model model, @RequestParam("id") Integer id) {
-        return new ModelAndView("clientUpdate", new ModelMap("clientId", id));
+    public ModelAndView thisClientForm(@RequestParam("id") Integer id) {
+        return new ModelAndView("redirect:clientUpdate", new ModelMap("clientId", id));
     }
 }
