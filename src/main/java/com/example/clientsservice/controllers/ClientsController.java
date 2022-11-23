@@ -19,7 +19,7 @@ public class ClientsController {
     @Autowired
     private ClientsService clientsService;
 
-    @GetMapping("/")
+    @GetMapping("///")
     public String load() {
         return "redirect:clients";
     }
