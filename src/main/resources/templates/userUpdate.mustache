@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Update</title>
+</head>
+<body>
+<div class="userForm">
+    {{#user}}
+    <form action="userUpdateForm" method="post">
+        <input type="hidden" name="id" value="{{id}}">
+        <input type="text" name="username" placeholder="Username" value="{{username}}">
+        <input type="text" name="password" placeholder="Password" value="{{password}}">
+        <select name="role" id="role">
+        {{#roles}}
+            <option value="{{key}}" {{value}}>{{key}}</option>
+        {{/roles}}
+        </select>
+        <select name="status" id="status">
+        {{#statuses}}
+            <option value="{{key}}" {{value}}>{{key}}</option>
+        {{/statuses}}
+        </select>
+        <input type="submit" value="SAVE" id="submitButton">
+    </form>
+    {{/user}}
+</div>
+</body>
+</html>
