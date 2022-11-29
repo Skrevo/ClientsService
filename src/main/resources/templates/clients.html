@@ -34,6 +34,12 @@
             <td th:utext="${client.patronymic}"></td>
             <td th:utext="${client.gender}"></td>
             <td th:utext="${client.email}"></td>
+            <td>
+                <form th:action="@{/openClientForm}" method="post">
+                    <input type="hidden" name="id" th:value="${client.id}">
+                    <input type="submit" value="&#8942;">
+                </form>
+            </td>
         </tr>
     </table>
 </div>
