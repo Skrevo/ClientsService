@@ -9,29 +9,25 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.List;
-
 @Controller
-public class ClientsController {
+public class ClientUpdateController {
     @Autowired
-    public ClientsService clientsService;
-    @GetMapping("clients")
-    public String load(Model model) {
-        List<Client> list = clientsService.findAll();
-        model.addAttribute("clients",list);
+    private ClientsService clientsService;
+
+    @GetMapping("clientUpdate")
+    public String load(@RequestParam("id") Integer id, Model model) {
+        Client client = clientsService.findById(id);
+        model.addAttribute("client",client);
         model.addAttribute("genders", Client.Gender.values());
-        return "clients";
-    }
-    @PostMapping("addClientForm")
-    public String addClientForm(@ModelAttribute Client client) {
-        clientsService.save(client);
-        return "redirect:clients";
+        return "clientUpdate";
     }
 
-    @PostMapping("openClientForm")
-    public ModelAndView openClientForm(Integer id) {
-        return new ModelAndView("redirect:clientUpdate", new ModelMap("id", id));
+    @PostMapping("updateClientForm")
+    public ModelAndView method(@ModelAttribute Client client) {
+        clientsService.save(client);
+        return new ModelAndView("redirect:clientUpdate", new ModelMap("id", client.getId()));
     }
 }
