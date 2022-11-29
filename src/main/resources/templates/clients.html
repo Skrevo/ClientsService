@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Clients</title>
+</head>
+<body>
+<div>
+
+</div>
+<div class="table">
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Surname</th>
+            <th>Name</th>
+            <th>Patronymic</th>
+            <th>Gender</th>
+            <th>Email</th>
+        </tr>
+        <tr th:each="client:${clients}">
+            <td th:utext="${client.id}"></td>
+            <td th:utext="${client.surname}"></td>
+            <td th:utext="${client.name}"></td>
+            <td th:utext="${client.patronymic}"></td>
+            <td th:utext="${client.gender}"></td>
+            <td th:utext="${client.email}"></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
