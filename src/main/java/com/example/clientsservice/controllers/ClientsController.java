@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -17,6 +19,12 @@ public class ClientsController {
     public String load(Model model) {
         List<Client> list = clientsService.findAll();
         model.addAttribute("clients",list);
+        model.addAttribute("genders", Client.Gender.values());
         return "clients";
+    }
+    @PostMapping("addClientForm")
+    public String addClientForm(@ModelAttribute Client client) {
+        clientsService.save(client);
+        return "redirect:clients";
     }
 }

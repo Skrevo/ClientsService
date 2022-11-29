@@ -5,8 +5,17 @@
     <title>Clients</title>
 </head>
 <body>
-<div>
-
+<div class="clientForm">
+    <form th:action="@{/addClientForm}" method="post">
+        <input type="text" name="surname" placeholder="Surname">
+        <input type="text" name="name" placeholder="Name">
+        <input type="text" name="patronymic" placeholder="Patronymic">
+        <select name="gender" id="gender">
+            <option th:each="gender:${genders}" th:value="${gender}" th:utext="${gender}"></option>
+        </select>
+        <input type="email" name="email" placeholder="Email">
+        <input type="submit" value="SAVE">
+    </form>
 </div>
 <div class="table">
     <table>
