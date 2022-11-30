@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+</head>
+<body>
+<div class="usersForm">
+  <form th:action="@{/addUserForm}" method="post">
+    <input type="text" name="username" placeholder="Username">
+    <input type="text" name="password" placeholder="Password">
+    <select name="role" id="role">
+      <option th:each="role:${roles}" th:value="${role}" th:utext="${role}"></option>
+    </select>
+    <select name="status" id="status">
+      <option th:each="status:${statuses}" th:value="${status}" th:utext="${status}"></option>
+    </select>
+    <input type="submit" value="SAVE">
+  </form>
+</div>
+<div class="table">
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Username</th>
+      <th>Password</th>
+      <th>Role</th>
+      <th>Status</th>
+    </tr>
+    <tr th:each="user:${users}">
+      <td th:utext="${user.id}"></td>
+      <td th:utext="${user.username}"></td>
+      <td th:utext="${user.password}"></td>
+      <td th:utext="${user.role}"></td>
+      <td th:utext="${user.status}"></td>
+      <td>
+        <form th:action="@{/openUserForm}" method="post">
+          <input type="hidden" name="id" th:value="${user.id}">
+          <input type="submit" value="&#8942;">
+        </form>
+      </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>
