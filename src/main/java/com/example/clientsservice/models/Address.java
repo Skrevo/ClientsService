@@ -9,7 +9,6 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-@ToString
 //
 @Entity
 @Table(name = "addresses")
@@ -32,4 +31,16 @@ public class Address {
     @JoinColumn(foreignKey = @ForeignKey(name = "FK_address_clients"))
     private Client client;
 
+    @Override
+    public String toString() {
+        return "Address{" +
+                "id=" + id +
+                ", region='" + region + '\'' +
+                ", district='" + district + '\'' +
+                ", city='" + city + '\'' +
+                ", street='" + street + '\'' +
+                ", house='" + house + '\'' +
+                ", apartment='" + apartment + '\'' +
+                '}';
+    }
 }

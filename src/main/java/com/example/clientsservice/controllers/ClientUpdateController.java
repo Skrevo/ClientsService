@@ -2,6 +2,7 @@ package com.example.clientsservice.controllers;
 
 import com.example.clientsservice.models.Address;
 import com.example.clientsservice.models.Client;
+import com.example.clientsservice.services.data.AddressService;
 import com.example.clientsservice.services.data.ClientsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,11 +19,17 @@ public class ClientUpdateController {
     @Autowired
     private ClientsService clientsService;
 
+    @Autowired
+    private AddressService addressService;
+
     @GetMapping("clientUpdate")
     public String load(@RequestParam("id") Integer id, Model model) {
         Client client = clientsService.findById(id);
+        if (client.getAddress() == null)
+            client.setAddress(new Address());
         model.addAttribute("client",client);
         model.addAttribute("genders", Client.Gender.values());
+        model.addAttribute("address",client.getAddress());
         return "clientUpdate";
     }
 
@@ -32,13 +39,17 @@ public class ClientUpdateController {
         return new ModelAndView("redirect:clientUpdate", new ModelMap("id", client.getId()));
     }
 
-    @PostMapping("updateClientAddresForm")
+    @PostMapping("updateClientAddressForm")
     public ModelAndView updateClientAddressForm(
             @ModelAttribute Client client,
-            @ModelAttribute Address address
+            @ModelAttribute Address address,
+            @RequestParam(value = "idAddress", required = false) Long idAddress
             ){
-        System.err.println(client);
-        System.err.println(address);
+        address.setId(idAddress);
+        address.setClient(client);
+        address = addressService.save(address);
+        client.setAddress(address);
+        clientsService.save(client);
         return new ModelAndView("redirect:clientUpdate",
                 new ModelMap("id",client.getId()));
     }
