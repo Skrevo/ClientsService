@@ -26,6 +26,10 @@
       <input type="text" name="house" placeholder="House" th:value="*{house}">
       <input type="text" name="apartment" placeholder="Apartment" th:value="*{apartment}">
     </div>
+    <div th:object="${client}" th:each="phone:${phones}">
+      <input type="text" name="id" placeholder="id" th:value="${phone.id}">
+      <input type="text" name="phone" placeholder="phone" th:value="${phone.phone}">
+    </div>
     <input type="submit" value="SAVE">
   </form>
 </div>

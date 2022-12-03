@@ -2,8 +2,10 @@ package com.example.clientsservice.controllers;
 
 import com.example.clientsservice.models.Address;
 import com.example.clientsservice.models.Client;
+import com.example.clientsservice.models.Phone;
 import com.example.clientsservice.services.data.AddressService;
 import com.example.clientsservice.services.data.ClientsService;
+import com.example.clientsservice.services.data.PhoneService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +16,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.*;
+
 @Controller
 public class ClientUpdateController {
     @Autowired
@@ -21,6 +25,9 @@ public class ClientUpdateController {
 
     @Autowired
     private AddressService addressService;
+
+    @Autowired
+    private PhoneService phoneService;
 
     @GetMapping("clientUpdate")
     public String load(@RequestParam("id") Integer id, Model model) {
@@ -30,6 +37,7 @@ public class ClientUpdateController {
         model.addAttribute("client",client);
         model.addAttribute("genders", Client.Gender.values());
         model.addAttribute("address",client.getAddress());
+        model.addAttribute("phones", client.getPhones());
         return "clientUpdate";
     }
 
@@ -43,8 +51,12 @@ public class ClientUpdateController {
     public ModelAndView updateClientAddressForm(
             @ModelAttribute Client client,
             @ModelAttribute Address address,
+            @ModelAttribute Phone phone,
             @RequestParam(value = "idAddress", required = false) Long idAddress
             ){
+        phone.setId(phone.getId());
+        phone.setClient(client);
+        phoneService.save(phone);
         address.setId(idAddress);
         address.setClient(client);
         address = addressService.save(address);
