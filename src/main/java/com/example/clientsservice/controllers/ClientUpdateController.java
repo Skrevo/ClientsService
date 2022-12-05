@@ -37,7 +37,7 @@ public class ClientUpdateController {
         model.addAttribute("client",client);
         model.addAttribute("genders", Client.Gender.values());
         model.addAttribute("address",client.getAddress());
-        //model.addAttribute("phones", client.getPhones());
+        model.addAttribute("phones", client.getPhones());
         return "clientUpdate";
     }
 
@@ -51,12 +51,12 @@ public class ClientUpdateController {
     public ModelAndView updateClientAddressForm(
             @ModelAttribute Client client,
             @ModelAttribute Address address,
-            //@ModelAttribute Phone phone,
+            @ModelAttribute Phone phone,
             @RequestParam(value = "idAddress", required = false) Long idAddress
             ){
-        //phone.setId(phone.getId());
-        //phone.setClient(client);
-        //phoneService.save(phone);
+        phone.setId(phone.getId());
+        phone.setClient(client);
+        phoneService.save(phone);
         address.setId(idAddress);
         address.setClient(client);
         address = addressService.save(address);

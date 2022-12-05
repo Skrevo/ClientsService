@@ -30,6 +30,11 @@
       <input type="text" name="id" placeholder="id" th:value="${phone.id}">
       <input type="text" name="phone" placeholder="phone" th:value="${phone.phone}">
     </div>
+    <div th:if="${true}" th:object="${client.phones.iterator()}">
+      <p>Add new phone</p>
+      <input type="text" name="id" placeholder="id" th:value="${id}">
+      <input type="text" name="phone" placeholder="phone" th:value="${phone}">
+    </div>
     <input type="submit" value="SAVE">
   </form>
 </div>
