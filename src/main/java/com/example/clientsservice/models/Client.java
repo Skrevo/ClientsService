@@ -1,8 +1,12 @@
 package com.example.clientsservice.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
@@ -33,6 +37,12 @@ public class Client {
     private Gender gender;
     @Column(length = 50, nullable = false, unique = true)
     private String email;
+
+    @Column(columnDefinition = "date")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    //@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    private LocalDate birthDate;
+
     @OneToOne(fetch = FetchType.LAZY)
     private Address address;
     @OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
@@ -44,6 +54,18 @@ public class Client {
             inverseJoinColumns = @JoinColumn(name = "account_id", nullable = false, foreignKey =@ForeignKey(name = "FK_accounts"))
     )
     private Set<Account> accounts;
+
+    public Client(Integer id, String surname, String name, String patronymic, Gender gender, String email, Address address, Set<Phone> phones, Set<Account> accounts) {
+        this.id = id;
+        this.surname = surname;
+        this.name = name;
+        this.patronymic = patronymic;
+        this.gender = gender;
+        this.email = email;
+        this.address = address;
+        this.phones = phones;
+        this.accounts = accounts;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -67,6 +89,10 @@ public class Client {
                 ", patronymic='" + patronymic + '\'' +
                 ", gender=" + gender +
                 ", email='" + email + '\'' +
+                ", birthDate=" + birthDate +
+                ", address=" + address +
+                ", phones=" + phones +
+                ", accounts=" + accounts +
                 '}';
     }
 }

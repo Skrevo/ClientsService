@@ -27,6 +27,7 @@ public class ClientsController {
     @PostMapping("addClientForm")
     public String addClientForm(@ModelAttribute Client client) {
         clientsService.save(client);
+        System.out.println(client);
         return "redirect:clients";
     }
 
