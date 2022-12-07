@@ -41,13 +41,7 @@ public class DateCalcTest {
     @Test
     void clientDateJson() {
         Client client = new Client(0, "a", "a", "a", Client.Gender.MALE, "a@tgf", LocalDate.now(), null, null, null);
-        /*
-        Gson gson = new Gson();
-        String json = gson.toJson(client);
-        System.out.println(json);
-        client = gson.fromJson(json, Client.class);
-        System.out.println(client);
-*/
+
         TypeAdapter<Client> typeAdapter = new TypeAdapter<>() {
             @Override
             public void write(JsonWriter jw, Client cl) throws IOException {
