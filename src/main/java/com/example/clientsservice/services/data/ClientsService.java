@@ -2,7 +2,6 @@ package com.example.clientsservice.services.data;
 
 import com.example.clientsservice.models.Client;
 
-import java.util.Collection;
 import java.util.List;
 
 public interface ClientsService {

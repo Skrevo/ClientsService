@@ -38,9 +38,8 @@ public class Client {
     @Column(length = 50, nullable = false, unique = true)
     private String email;
 
-    @Column(columnDefinition = "date")
+    //@Column(columnDefinition = "date")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    //@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate birthDate;
 
     @OneToOne(fetch = FetchType.LAZY)
