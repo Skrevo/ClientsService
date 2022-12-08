@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Clients</title>
+    <script src="/clientsAdd.js"></script>
 </head>
 <body>
 <div class="clientForm">
-    <form th:action="@{/addClientForm}" method="post">
+    <form th:action="@{/addClientForm}" method="post" id="addClientForm">
         <input type="text" name="surname" placeholder="Surname">
         <input type="text" name="name" placeholder="Name">
         <input type="text" name="patronymic" placeholder="Patronymic">
@@ -15,7 +16,7 @@
         </select>
         <input type="email" name="email" placeholder="Email">
         <input type="date" name="birthDate">
-        <input type="submit" value="SAVE">
+        <input type="submit" id="submitAddClientForm" value="SAVE">
     </form>
 </div>
 <div class="table">
