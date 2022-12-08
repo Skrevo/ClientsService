@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Clients</title>
+    <script src="/mustache.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="/clientsAdd.js"></script>
 </head>
 <body>
@@ -19,7 +21,7 @@
         <input type="submit" id="submitAddClientForm" value="SAVE">
     </form>
 </div>
-<div class="table">
+<div class="table" id="tableOutput">
     <table>
         <tr>
             <th>ID</th>
