@@ -22,7 +22,9 @@ public class ClientsRestController {
         System.err.println(client);
         clientsService.save(client);
         List<Client> list = clientsService.findAll();
-        return new ResponseEntity(list, HttpStatus.OK);
+        return new ResponseEntity<>(list, HttpStatus.OK);
+        //return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        //return new ResponseEntity<>(HttpStatus.CONTINUE);
 
     }
 }
