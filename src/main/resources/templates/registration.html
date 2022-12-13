@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+    <th:block th:insert="~{fragments/headSettings::headSettings}"></th:block>
+</head>
+<body>
+<th:block th:insert="~{fragments/pageHeader::pageHeader}"></th:block>
+<div class="formDiv">
+    <form th:action="registrationForm" method="post">
+        <input type="text" name="username" placeholder="Username">
+        <input type="password" name="password" placeholder="Password">
+        <input type="password" name="password" placeholder="Confirm">
+        <input type="email" name="email" placeholder="Email">
+        <input type="button" value="Cancel">
+        <input type="button" value="Register" style="width: 100px">
+    </form>
+</div>
+</body>
+</html>

@@ -1,4 +1,4 @@
-package com.example.clientsservice.controllers;
+package com.example.clientsservice.ui.controllers;
 
 import com.example.clientsservice.models.User;
 import com.example.clientsservice.services.data.UserService;
@@ -9,31 +9,26 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.List;
-
 @Controller
-public class UsersController {
+public class UserUpdateController {
     @Autowired
     public UserService userService;
 
-    @GetMapping("users")
-    public String load(Model model) {
-        List<User> list = userService.findAll();
-        model.addAttribute("users",list);
+    @GetMapping("userUpdate")
+    public String load(@RequestParam("id") Integer id, Model model) {
+        User user = userService.findById(id);
+        model.addAttribute("user",user);
         model.addAttribute("roles", User.Role.values());
         model.addAttribute("statuses", User.Status.values());
-        return "users";
-    }
-    @PostMapping("addUserForm")
-    public String addClientForm(@ModelAttribute User user) {
-        userService.save(user);
-        return "redirect:users";
+        return "userUpdate";
     }
 
-    @PostMapping("openUserForm")
-    public ModelAndView openUserForm(Integer id) {
-        return new ModelAndView("redirect:userUpdate", new ModelMap("id", id));
+    @PostMapping("updateUserForm")
+    public ModelAndView method(@ModelAttribute User user) {
+        userService.save(user);
+        return new ModelAndView("redirect:userUpdate", new ModelMap("id", user.getId()));
     }
 }

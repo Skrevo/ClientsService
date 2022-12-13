@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Users</title>
+  <th:block th:insert="~{fragments/headSettings::headSettings}"></th:block>
 </head>
 <body>
+<th:block th:insert="~{fragments/pageHeader::pageHeader}"></th:block>
 <div class="usersForm">
   <form th:action="@{/addUserForm}" method="post">
     <input type="text" name="username" placeholder="Username">

@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Clients</title>
+    <th:block th:insert="~{fragments/headSettings::headSettings}"></th:block>
     <script src="/mustache.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="/clientsAddJquery.js"></script>
 </head>
 <body>
+<th:block th:insert="~{fragments/pageHeader::pageHeader}"></th:block>
 <div class="clientForm">
     <form th:action="@{/addClientForm}" method="post" id="addClientForm">
         <input type="text" name="surname" placeholder="Surname">

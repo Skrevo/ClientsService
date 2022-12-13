@@ -1,4 +1,4 @@
-package com.example.clientsservice.controllers.restcontrollers;
+package com.example.clientsservice.ui.restcontrollers;
 
 import com.example.clientsservice.models.Client;
 import com.example.clientsservice.services.data.ClientsService;

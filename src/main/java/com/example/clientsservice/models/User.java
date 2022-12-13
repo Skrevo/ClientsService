@@ -31,6 +31,8 @@ public class User {
     private Role role;
     @Column(nullable = false)
     private Status status;
+    @Column(nullable = false, unique = true)
+    private String email;
 
     @Override
     public String toString() {

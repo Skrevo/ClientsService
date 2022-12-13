@@ -1,4 +1,4 @@
-package com.example.clientsservice.controllers;
+package com.example.clientsservice.ui.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
