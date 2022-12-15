@@ -11,6 +11,7 @@
   <form th:action="@{/addUserForm}" method="post">
     <input type="text" name="username" placeholder="Username">
     <input type="text" name="password" placeholder="Password">
+    <input type="text" name="email" placeholder="Email">
     <select name="role" id="role">
       <option th:each="role:${roles}" th:value="${role}" th:utext="${role}"></option>
     </select>
@@ -25,16 +26,16 @@
     <tr>
       <th>ID</th>
       <th>Username</th>
-      <th>Password</th>
       <th>Role</th>
       <th>Status</th>
+      <th>Email</th>
     </tr>
     <tr th:each="user:${users}">
       <td th:utext="${user.id}"></td>
       <td th:utext="${user.username}"></td>
-      <td th:utext="${user.password}"></td>
       <td th:utext="${user.role}"></td>
       <td th:utext="${user.status}"></td>
+      <td th:utext="${user.email}"></td>
       <td>
         <form th:action="@{/openUserForm}" method="post">
           <input type="hidden" name="id" th:value="${user.id}">

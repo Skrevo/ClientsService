@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Registration</title>
+    <script src="/registration.js"></script>
     <th:block th:insert="~{fragments/headSettings::headSettings}"></th:block>
 </head>
 <body>
 <th:block th:insert="~{fragments/pageHeader::pageHeader}"></th:block>
 <div class="formDiv">
-    <form th:action="registrationForm" method="post">
+    <form th:action="registrationForm" method="post" name="registrationForm">
         <input type="text" name="username" placeholder="Username">
         <input type="password" name="password" placeholder="Password">
-        <input type="password" name="password" placeholder="Confirm">
+        <input type="password" name="confirm" placeholder="Confirm">
         <input type="email" name="email" placeholder="Email">
         <input type="button" value="Cancel">
-        <input type="button" value="Register" style="width: 100px">
+        <input type="button" value="Register" style="width: 100px" onclick="submitRegForm()">
     </form>
 </div>
 </body>

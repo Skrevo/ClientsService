@@ -27,9 +27,9 @@ public class User {
     private String username;
     @Column(nullable = false)
     private String password;
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "int(1) default 0")
     private Role role;
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "int(1) default 0")
     private Status status;
     @Column(nullable = false, unique = true)
     private String email;
