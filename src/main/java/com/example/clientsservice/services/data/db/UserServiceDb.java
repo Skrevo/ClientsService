@@ -32,4 +32,10 @@ public class UserServiceDb implements UserService {
     public User findByUsername(String username) {
         return userRepository.findByUsername(username);
     }
+
+    @Override
+    public List<User> saveAll(List<User> users) {
+        return userRepository.saveAll(users);
+
+    }
 }
