@@ -26,7 +26,7 @@ public class AccountEmptyService {
         return new AsyncResult<>(accountList);
     }
 
-    @Scheduled(cron = "*/2 * * * *", zone = "Europe/Kiev")
+    @Scheduled(cron = "*/1 * * * * *", zone = "Europe/Kiev")
     @Async
     public void start() {
         try {
