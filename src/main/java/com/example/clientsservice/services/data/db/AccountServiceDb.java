@@ -28,4 +28,9 @@ public class AccountServiceDb implements AccountService {
     public List<Account> saveAll(List<Account> accounts) {
         return accountRepository.saveAll(accounts);
     }
+
+    @Override
+    public List<Account> findAllByAmountEquals(int amount) {
+        return accountRepository.findAllByAmountEquals(amount);
+    }
 }

@@ -67,7 +67,6 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
          httpSecurity
-                 //.csrf().disable()
                 .authorizeRequests()
                 .antMatchers(
                         "/error",
@@ -79,10 +78,7 @@ public class SecurityConfig {
                         "/",
                         "clients"
                 )
-                .hasAnyAuthority(
-                        USER.name(),
-                        ADMIN.name()
-                )
+                .authenticated()
                 //
                 .antMatchers(
                         "/users"
@@ -96,11 +92,10 @@ public class SecurityConfig {
                  .loginPage(
                          "/authorization"
                  )
-                 .permitAll()
                  //
                  .and()
                  .logout()
-                 .logoutUrl("j_spring_security_logout")
+                 //.logoutUrl("j_spring_security_logout")
                  .logoutSuccessUrl(
                          "/authorization"
                  )
