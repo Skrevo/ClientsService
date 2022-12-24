@@ -22,7 +22,7 @@ public class AccountEmptyService {
 
     @Async
     public Future<List<Account>> checkAccounts() {
-        List<Account> accountList = accountService.findAllByAmountEquals(0);
+        List<Account> accountList = accountService.findAllByAmountEqualsAndAmountLessThan(0);
         return new AsyncResult<>(accountList);
     }
 

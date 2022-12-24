@@ -30,7 +30,7 @@ public class AccountServiceDb implements AccountService {
     }
 
     @Override
-    public List<Account> findAllByAmountEquals(int amount) {
-        return accountRepository.findAllByAmountEquals(amount);
+    public List<Account> findAllByAmountEqualsAndAmountLessThan(int amount) {
+        return accountRepository.findAllByAmountEqualsAndAmountLessThan(amount, amount);
     }
 }
