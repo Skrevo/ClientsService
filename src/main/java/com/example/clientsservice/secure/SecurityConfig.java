@@ -76,7 +76,7 @@ public class SecurityConfig {
                 //
                 .antMatchers(
                         "/",
-                        "clients"
+                        "/clients"
                 )
                 .authenticated()
                 //
